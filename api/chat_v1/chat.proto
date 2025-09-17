@@ -14,7 +14,8 @@ service ChatV1 {
 }
 
 message CreateChatInfo {
-  repeated string usernames = 1;
+  string name = 1;
+  repeated string usernames = 2;
 }
 
 message CreateRequest {
@@ -33,4 +34,5 @@ message SendMessageRequest {
   string from = 1;
   string text = 2;
   google.protobuf.Timestamp timestamp = 3;
+  int64 chat_id = 4;
 }
