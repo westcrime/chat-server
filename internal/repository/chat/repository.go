@@ -1,4 +1,4 @@
-package postgres
+package chat
 
 import (
 	"context"
@@ -6,7 +6,7 @@ import (
 
 	sq "github.com/Masterminds/squirrel"
 	"github.com/jackc/pgx/v5/pgxpool"
-	chatrepository "github.com/westcrime/chat-server/internal/chat_repository"
+	"github.com/westcrime/chat-server/internal/repository"
 	"github.com/westcrime/chat-server/internal/model"
 )
 
@@ -14,7 +14,7 @@ type chatRepository struct {
 	pool *pgxpool.Pool
 }
 
-func NewChatRepository(pool *pgxpool.Pool) chatrepository.ChatRepository {
+func NewChatRepository(pool *pgxpool.Pool) repository.ChatRepository {
 	return &chatRepository{pool: pool}
 }
 

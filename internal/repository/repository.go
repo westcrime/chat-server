@@ -1,4 +1,4 @@
-package chatrepository
+package repository
 
 import (
 	"context"

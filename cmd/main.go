@@ -10,10 +10,10 @@ import (
 	"google.golang.org/grpc/reflection"
 
 	"github.com/jackc/pgx/v5/pgxpool"
-	urp "github.com/westcrime/chat-server/internal/chat_repository/postgres"
-	usp "github.com/westcrime/chat-server/internal/chat_service/postgres"
+	urp "github.com/westcrime/chat-server/internal/repository/chat"
+	usp "github.com/westcrime/chat-server/internal/service/chat"
 	"github.com/westcrime/chat-server/internal/config"
-	grpcserver "github.com/westcrime/chat-server/internal/grpc_server"
+	api "github.com/westcrime/chat-server/internal/api/chat"
 	desc "github.com/westcrime/chat-server/pkg/chat_v1"
 )
 
@@ -54,7 +54,7 @@ func main() {
 	ur := urp.NewChatRepository(pool)
 	us := usp.NewChatService(ur)
 
-	desc.RegisterChatV1Server(s, grpcserver.NewServer(us))
+	desc.RegisterChatV1Server(s, api.NewChatServer(us))
 
 	log.Printf("server listening at %v", lis.Addr())
 

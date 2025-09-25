@@ -4,8 +4,6 @@ import (
 	"time"
 )
 
-type Role int32
-
 type CreateChat struct {
 	Name      string
 	Usernames []string
